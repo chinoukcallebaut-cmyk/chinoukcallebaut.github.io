@@ -1,0 +1,335 @@
+/* ============================================================
+   Creative Automation — V2
+   Idee: één systeem, telkens een andere uitvoer.
+   Kleur draagt de structuur, letterbreedte draagt de variatie.
+   Palet: #B2D7DB  #5EBDB7  #F0AE33  #F1CCB7  #D98C6E
+   ============================================================ */
+
+:root {
+  --mist: #B2D7DB;
+  --teal: #5EBDB7;
+  --amber: #F0AE33;
+  --blush: #F1CCB7;
+  --clay: #D98C6E;
+
+  --ink: #000;
+  --paper: #FCFCFA;
+
+  --face: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  /* type scale, 1.333 */
+  --t-xs: 0.75rem;
+  --t-s:  0.875rem;
+  --t-m:  1.0625rem;
+  --t-l:  clamp(1.35rem, 1.1rem + 1.2vw, 2rem);
+  --t-xl: clamp(2rem, 1.2rem + 4vw, 4.5rem);
+  /* de hero-regels vullen de kolom: grootte volgt uit de breedte,
+     9.7 is de gemeten verhouding tussen regelbreedte en korps */
+  --t-run: min(calc((100vw - 2 * var(--gutter)) / 9.9), 7.5rem);
+
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --bar-h: 3.5rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--bar-h);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--face);
+  font-size: var(--t-m);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--ink); color: var(--paper); }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.7rem 1rem;
+  font-size: var(--t-s);
+  text-decoration: none;
+}
+
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+/* ---------- balk ------------------------------------------- */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  min-height: var(--bar-h);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+}
+
+.bar__home {
+  font-size: var(--t-s);
+  font-weight: 700;
+  font-stretch: 80%;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+}
+
+.bar__nav { margin-left: auto; }
+
+.dots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dots a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  justify-content: center;
+  padding: 0 0.6rem;
+  font-size: var(--t-xs);
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+/* de stip draagt de kleur van zijn hoofdstuk: kleur is hier informatie */
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  flex: none;
+  transition: background-color 0.15s linear;
+}
+
+.dots a[data-field="mist"]  .dot { background: var(--mist); }
+.dots a[data-field="teal"]  .dot { background: var(--teal); }
+.dots a[data-field="amber"] .dot { background: var(--amber); }
+.dots a[data-field="blush"] .dot { background: var(--blush); }
+.dots a[data-field="clay"]  .dot { background: var(--clay); }
+
+.dots__label { display: none; }
+
+.dots a[aria-current="true"] .dots__label {
+  display: inline;
+  font-weight: 700;
+}
+
+.dots a[aria-current="true"] .dot {
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--ink);
+}
+
+.bar__here { display: none; }
+
+/* ---------- hero: één titel, vijf uitvoeringen -------------- */
+
+.hero {
+  padding: clamp(3rem, 11vh, 7rem) var(--gutter) clamp(3rem, 9vh, 6rem);
+  overflow: hidden;   /* de regels blijven binnen de kolom */
+  overflow: clip;
+}
+
+.hero__title,
+.hero__echo > .run {
+  display: block;
+  margin: 0;
+  font-size: var(--t-xl);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.run { display: block; will-change: transform; }
+
+.run__ink {
+  display: block;
+  transform-origin: 0 50%;
+}
+
+/* Vijf keer dezelfde regel, even breed afgeleverd: de letterbreedte
+   loopt op, de korpsgrootte compenseert. Eén sjabloon, vijf instellingen. */
+.hero .run--1 { font-stretch: 62%;  font-size: calc(var(--t-run) * 1.62); opacity: 1;    }
+.hero .run--2 { font-stretch: 78%;  font-size: calc(var(--t-run) * 1.30); opacity: 0.72; }
+.hero .run--3 { font-stretch: 95%;  font-size: calc(var(--t-run) * 1.07); opacity: 0.5;  }
+.hero .run--4 { font-stretch: 110%; font-size: calc(var(--t-run) * 0.92); opacity: 0.3;  }
+.hero .run--5 { font-stretch: 125%; font-size: calc(var(--t-run) * 0.81); opacity: 0.16; }
+
+/* het ene geregisseerde moment op de pagina */
+.js .hero .run__ink {
+  opacity: 0;
+  transform: scaleX(0.88);
+  transition: opacity 0.5s linear, transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.js .hero.is-on .run--1 .run__ink { opacity: 1;    transform: none; transition-delay: 0.05s; }
+.js .hero.is-on .run--2 .run__ink { opacity: 1; transform: none; transition-delay: 0.14s; }
+.js .hero.is-on .run--3 .run__ink { opacity: 1;  transform: none; transition-delay: 0.23s; }
+.js .hero.is-on .run--4 .run__ink { opacity: 1;  transform: none; transition-delay: 0.32s; }
+.js .hero.is-on .run--5 .run__ink { opacity: 1; transform: none; transition-delay: 0.41s; }
+
+/* ---------- hoofdstukken als volvlakken --------------------- */
+
+.chapter {
+  padding: clamp(2.5rem, 7vw, 5.5rem) var(--gutter);
+  border-top: 2px solid var(--ink);
+  display: grid;
+  gap: clamp(1rem, 3vw, 3rem);
+}
+
+.chapter__title {
+  margin: 0;
+  font-size: var(--t-l);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.chapter__text p {
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* illustratie: hoort bij het hoofdstuk, deelt zijn kleurveld */
+.chapter__figure {
+  margin: 0;
+}
+
+.chapter__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--ink);
+}
+
+.chapter--mist  { background: var(--mist);  }
+.chapter--teal  { background: var(--teal);  }
+.chapter--amber { background: var(--amber); }
+.chapter--blush { background: var(--blush); }
+.chapter--clay  { background: var(--clay);  }
+.chapter--mist2 { background: var(--mist);  }
+
+/* de breedte loopt op door de hoofdstukken heen: dezelfde letter,
+   steeds anders uitgevoerd — zoals de campagne zelf */
+.chapter--mist  .chapter__title { font-stretch: 70%;  }
+.chapter--teal  .chapter__title { font-stretch: 82%;  }
+.chapter--amber .chapter__title { font-stretch: 94%;  }
+.chapter--blush .chapter__title { font-stretch: 106%; }
+.chapter--clay  .chapter__title { font-stretch: 118%; }
+.chapter--mist2 .chapter__title { font-stretch: 125%; }
+
+/* ---------- slot ------------------------------------------- */
+
+.end {
+  padding: clamp(2.5rem, 7vw, 5rem) var(--gutter);
+  border-top: 2px solid var(--ink);
+}
+
+.end__mark {
+  margin: 0;
+  font-size: var(--t-xl);
+  font-weight: 800;
+  font-stretch: 125%;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- breder scherm ---------------------------------- */
+
+@media (min-width: 52rem) {
+  /* tekst links in één kolom, het beeld rechts ernaast */
+  .chapter {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    grid-template-areas:
+      "title figure"
+      "text  figure";
+    grid-template-rows: auto 1fr;
+    align-items: start;
+  }
+
+  .chapter__title  { grid-area: title;  }
+  .chapter__text   { grid-area: text;   }
+  .chapter__figure { grid-area: figure; }
+
+  .dots__label { display: inline; }
+  .dots a { padding: 0 0.75rem; }
+  .dots a[aria-current="true"] .dot { box-shadow: none; }
+  .dots a[aria-current="true"] { text-decoration: underline; text-underline-offset: 0.3em; }
+}
+
+/* op smal scherm blijven de stippen over; de balk noemt waar je bent */
+@media (max-width: 51.999rem) {
+  .bar { flex-wrap: wrap; gap: 0 0.75rem; }
+  .bar__nav { margin-left: auto; }
+
+  .bar__here {
+    display: block;
+    width: 100%;
+    margin: 0 0 0.5rem;
+    font-size: var(--t-xs);
+    font-weight: 700;
+    font-stretch: 80%;
+    order: 3;
+  }
+
+  .bar__here:empty { display: none; }
+}
+
+/* ---------- toegankelijkheid & print ------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .js .hero .run__ink,
+  .js .hero.is-on .run--1 .run__ink,
+  .js .hero.is-on .run--2 .run__ink,
+  .js .hero.is-on .run--3 .run__ink,
+  .js .hero.is-on .run--4 .run__ink,
+  .js .hero.is-on .run--5 .run__ink {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* zonder beweging staat de stapel stil, zonder parallax */
+  .js .hero .run { transform: none !important; }
+
+  .dot { transition: none; }
+}
+
+@media print {
+  .bar, .skip { display: none; }
+  .chapter { break-inside: avoid; }
+  .js .hero .run { transform: none !important; }
+  .js .hero .run__ink { opacity: 1; transform: none; }
+}

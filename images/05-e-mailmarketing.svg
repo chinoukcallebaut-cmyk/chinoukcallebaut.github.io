@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Eén inschrijving vertakt via knooppunten naar drie opeenvolgende e-mails.">
+  <rect width="1200" height="800" fill="#B2D7DB"/>
+  <g stroke="#000" stroke-width="10" fill="none" stroke-linejoin="miter">
+    <!-- de flow -->
+    <path d="M320 400 H470"/>
+    <path d="M470 400 V200 H600"/>
+    <path d="M470 400 H600"/>
+    <path d="M470 400 V600 H600"/>
+  </g>
+  <g stroke="#000" stroke-width="10" stroke-linejoin="miter">
+    <!-- inschrijving -->
+    <rect x="90" y="310" width="230" height="180" fill="#FCFCFA"/>
+    <path d="M90 310 L205 420 L320 310" fill="none"/>
+
+    <!-- knooppunt -->
+    <circle cx="470" cy="400" r="26" fill="#000"/>
+
+    <!-- de reeks welkomstmails -->
+    <rect x="600" y="120" width="230" height="160" fill="#5EBDB7"/>
+    <path d="M600 120 L715 220 L830 120" fill="none"/>
+
+    <rect x="700" y="320" width="230" height="160" fill="#F0AE33"/>
+    <path d="M700 320 L815 420 L930 320" fill="none"/>
+
+    <rect x="800" y="520" width="230" height="160" fill="#D98C6E"/>
+    <path d="M800 520 L915 620 L1030 520" fill="none"/>
+  </g>
+</svg>

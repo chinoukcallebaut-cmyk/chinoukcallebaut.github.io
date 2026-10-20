@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Zes kaders met dezelfde scène, telkens in een andere kleurverdeling.">
+  <rect width="1200" height="800" fill="#F1CCB7"/>
+  <g stroke="#000" stroke-width="10" stroke-linejoin="miter">
+    <!-- rij 1 -->
+    <g>
+      <rect x="90" y="120" width="320" height="250" fill="#B2D7DB"/>
+      <circle cx="190" cy="210" r="48" fill="#F0AE33"/>
+      <path d="M90 330 L230 250 L410 340 V370 H90 Z" fill="#D98C6E"/>
+    </g>
+    <g>
+      <rect x="440" y="120" width="320" height="250" fill="#F0AE33"/>
+      <circle cx="540" cy="210" r="48" fill="#FCFCFA"/>
+      <path d="M440 330 L580 250 L760 340 V370 H440 Z" fill="#5EBDB7"/>
+    </g>
+    <g>
+      <rect x="790" y="120" width="320" height="250" fill="#5EBDB7"/>
+      <circle cx="890" cy="210" r="48" fill="#F1CCB7"/>
+      <path d="M790 330 L930 250 L1110 340 V370 H790 Z" fill="#B2D7DB"/>
+    </g>
+    <!-- rij 2 -->
+    <g>
+      <rect x="90" y="420" width="320" height="250" fill="#D98C6E"/>
+      <circle cx="190" cy="510" r="48" fill="#B2D7DB"/>
+      <path d="M90 630 L230 550 L410 640 V670 H90 Z" fill="#F0AE33"/>
+    </g>
+    <g>
+      <rect x="440" y="420" width="320" height="250" fill="#FCFCFA"/>
+      <circle cx="540" cy="510" r="48" fill="#D98C6E"/>
+      <path d="M440 630 L580 550 L760 640 V670 H440 Z" fill="#B2D7DB"/>
+    </g>
+    <g>
+      <rect x="790" y="420" width="320" height="250" fill="#B2D7DB"/>
+      <circle cx="890" cy="510" r="48" fill="#5EBDB7"/>
+      <path d="M790 630 L930 550 L1110 640 V670 H790 Z" fill="#F1CCB7"/>
+    </g>
+  </g>
+</svg>

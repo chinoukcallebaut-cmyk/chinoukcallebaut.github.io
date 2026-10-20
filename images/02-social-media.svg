@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Eén sjabloon links levert rechts vier uitvoeringen in verschillende formaten.">
+  <rect width="1200" height="800" fill="#F0AE33"/>
+  <g stroke="#000" stroke-width="10" stroke-linejoin="miter">
+    <!-- bron: het sjabloon -->
+    <rect x="80" y="330" width="170" height="170" fill="#B2D7DB"/>
+    <rect x="118" y="368" width="94" height="94" fill="none" stroke-width="8"/>
+
+    <!-- verbindingslijn naar de uitvoeringen -->
+    <path d="M250 415 H360" fill="none"/>
+
+    <!-- uitvoeringen, op één basislijn: vierkant, portret, banner, verticaal -->
+    <rect x="390" y="310" width="230" height="230" fill="#5EBDB7"/>
+    <rect x="660" y="240" width="170" height="300" fill="#F1CCB7"/>
+    <rect x="870" y="420" width="250" height="120" fill="#D98C6E"/>
+    <rect x="870" y="240" width="110" height="150" fill="#FCFCFA"/>
+  </g>
+  <!-- formaatmarkeringen onder de basislijn -->
+  <g fill="#000">
+    <rect x="390" y="570" width="230" height="10"/>
+    <rect x="660" y="570" width="170" height="10"/>
+    <rect x="870" y="570" width="250" height="10"/>
+  </g>
+</svg>
